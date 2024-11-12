@@ -2,6 +2,7 @@ import os
 import logging
 from dotenv import load_dotenv
 
+from .ollama_handler import OllamaHandler
 from .llm_controller import LLMController
 from .slack_handler import SlackHandler
 from .openai_handler import OpenAIHandler
@@ -44,6 +45,13 @@ def initialized_llm_controller():
             {
                 "name": "Claude",
                 "handler": ClaudeHandler,
+                "handler_args": {
+                    "personality": DEFAULT_RESPONSES["features"]["personality"]
+                },
+            },
+            {
+                "name": "Ollama",
+                "handler": OllamaHandler,
                 "handler_args": {
                     "personality": DEFAULT_RESPONSES["features"]["personality"]
                 },
